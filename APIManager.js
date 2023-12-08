@@ -5,9 +5,10 @@ const POKEMON_NUMBER = 949;
 const POKEMON_MIN_ID =1;
 
 class APIManager {
-    constructor() {
+    #storageModal
+    constructor(storageModal) {
         this.data = {};
-        this.pending =false;
+        this.#storageModal = storageModal;
     }
 
     generateUser(){
@@ -31,8 +32,20 @@ class APIManager {
         })
     }
 
-    isPending(){
-        return this.pending;
+    getUserFromStorage(){
+        const data = this.#storageModal.get(USER_STORAGE_DATA_KEY)
+        if(data){
+            return data
+        }
+        return null;
+    }
+
+    updateDataToStorage(){
+        if(!this.data.user){
+            return
+        }
+
+        this.#storageModal.set(USER_STORAGE_DATA_KEY,this.data);
     }
 
     #_getUsersPromise() {

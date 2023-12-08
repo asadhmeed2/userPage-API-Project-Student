@@ -1,4 +1,4 @@
-class LocalStorageModule{
+class LocalStorageModal{
 
     get(key){
        const result =  localStorage.getItem(key); 
