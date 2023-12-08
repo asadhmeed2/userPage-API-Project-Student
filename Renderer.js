@@ -7,18 +7,21 @@ class Renderer {
     #quateView = $('.quote-container');
     #pokemonView = $('.pokemon-container');
     #aboutMeView = $('.meat-container');
+    #friendsView = $('.friends-container');
 
     #headerTemplate = Handlebars.compile($("#user-header-template").html())
     #quoteTemplate = Handlebars.compile($("#quote-template").html())
     #pokemonTemplate = Handlebars.compile($("#pokemon-template").html())
     #aboutMeTemplate = Handlebars.compile($("#about-me-template").html())
-    #usersListItemTemplate = Handlebars.compile($("#users-list-item-template").html())
+    #frindsListTemplate = Handlebars.compile($("#frinds-list-template").html())
+    #frindsItemTemplate = Handlebars.compile($("#frinds-item-template").html())
 
     render(data){
-        this.#renderElement(this.#headerView,data.users[VIEW_USER_DATA_IDX],this.#headerTemplate)
+        this.#renderElement(this.#headerView,data.user,this.#headerTemplate)
         this.#renderElement(this.#quateView,{quote : data.quote},this.#quoteTemplate)
         this.#renderElement(this.#pokemonView,data.pokemon,this.#pokemonTemplate)
         this.#renderElement(this.#aboutMeView,{aboutMe : data.aboutMe},this.#aboutMeTemplate)
+        this.#renderUserFrinds(data.friends)
     }
 
 
@@ -29,7 +32,17 @@ class Renderer {
     }
 
    
-    #renderUserOtherUsers(users){}
+    #renderUserFrinds(friends){
+        this.#friendsView.empty();
+        const listUlHtml = this.#frindsListTemplate()
+        this.#friendsView.append(listUlHtml);
+        const friendsUl = this.#friendsView.find('ul');
+
+        friends.forEach(friend =>{
+           const newHtml = this.#frindsItemTemplate(friend.name)
+           friendsUl.append(newHtml)
+        })
+    }
 
 
 }

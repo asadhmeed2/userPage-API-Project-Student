@@ -22,7 +22,10 @@ class APIManager {
             const quote = dataArray[ QUOTE_DATA_IDX].quote;
             const aboutMe = dataArray[ABOUT_ME_DATA_IDX][0];
 
-            this.data = {users,pokemon,quote,aboutMe}
+            const friends = users.splice(1);
+            const user = users[VIEW_USER_IDX];
+
+            this.data = {user,pokemon,quote,aboutMe,friends}
 
             return this.data
         })

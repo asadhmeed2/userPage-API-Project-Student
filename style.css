@@ -80,6 +80,10 @@ ul {
     list-style-type: none;
 }
 
+.friend{
+    padding: 10px;
+}
+
 .buttons {
     position: fixed;
     bottom: 1vw;

@@ -53,22 +53,28 @@
 </script>
 
 <script id="quote-template" type="text/x-handlebars-template">
-    <div class="">Favorite quote :</div>
+    <p class="">Favorite quote :</p>
     <div class="">{{quote}}</div>
 </script>
 
 <script id="pokemon-template" type="text/x-handlebars-template">
-    <img src="{{img}}" alt="pokemon image">
-    <div class=""><span>Favorite Pokemon:</span> <span>{{name}}</span></div>
+    <img src="{{img}}" alt="pokemon image" id="pokemon-image">
+    <div id="pokemon-text"><span>Favorite Pokemon:</span> <span>{{name}}</span></div>
 </script>
 
 <script id="about-me-template" type="text/x-handlebars-template">
-    <div class="">About me :</div>
-    <div class="">{{aboutMe}}</div>
+    <div class="meat-text">
+        <div class="">About me :</div>
+        <div class="">{{aboutMe}}</div>
+    </div>
 </script>
 
-<script id="users-list-item-template" type="text/x-handlebars-template">
-   <div class="">{{name}}</div>
+<script id="frinds-list-template" type="text/x-handlebars-template">
+   <ul></ul>
+</script>
+
+<script id="frinds-item-template" type="text/x-handlebars-template">
+   <div class="friend">{{first}} {{last}}</div>
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script> <script src="apt-data.js"></script>
