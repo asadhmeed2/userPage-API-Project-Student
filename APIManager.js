@@ -5,58 +5,62 @@ const POKEMON_NUMBER = 949;
 const POKEMON_MIN_ID =1;
 
 class APIManager {
-  constructor() {
-    this.data = {};
-    this.pending =false;
-  }
-
-  initData(){
-    this.pending = true;
-    Promise.all([this._getUsersPromise(),this._getPokemonsPromise(),this._getQuotePromise(),this._getLoremPromise()]).then((dataArray)=>{
-        console.log(dataArray);
-        const users = this._mappUsers(dataArray[0]);
-        const pokemon = this._mappPokemon(dataArray[1]);
-        const quote = dataArray[2].quote;
-        const aboutMe = dataArray[3][0];
-
-        this.data = {users,pokemon,quote,aboutMe}
-
+    constructor() {
+        this.data = {};
         this.pending =false;
-    })
-  }
+    }
 
-  isPending(){
-    return this.pending;
-  }
+    generateUser(){
+    return Promise.all([
+        this.#_getUsersPromise(),
+        this.#_getPokemonsPromise(),
+        this.#_getQuotePromise(),
+        this.#_getAboutMePromise()
+        ]).then((dataArray)=>{
+            const users = this.#_mappUsers(dataArray[VIEW_USER_DATA_IDX]);
+            const pokemon = this.#_mappPokemon(dataArray[POKEMON_DATA_IDX]);
+            const quote = dataArray[ QUOTE_DATA_IDX].quote;
+            const aboutMe = dataArray[ABOUT_ME_DATA_IDX][0];
 
-    _getUsersPromise() {
+            this.data = {users,pokemon,quote,aboutMe}
+
+            return this.data
+        })
+    }
+
+    isPending(){
+        return this.pending;
+    }
+
+    #_getUsersPromise() {
         return $.get(`https://randomuser.me/api/?results=${USERS_RESULT_COUNT}`)
     }
 
-    _getPokemonsPromise() {
+    #_getPokemonsPromise() {
         const randomNumber = Math.floor(Math.random() * POKEMON_NUMBER) + POKEMON_MIN_ID
         return $.get(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`)
     }
 
-    _getQuotePromise() {
+    #_getQuotePromise() {
         return $.get(`https://api.kanye.rest/`)
     }
 
-    _getLoremPromise(){
+    #_getAboutMePromise(){
         return $.get(`https://baconipsum.com/api/?type=all-meat&paras=1&start-with-lorem=1`)
     }
 
-    _mappUsers(data){
+    #_mappUsers(data){
         const users = data.results;
         const results = users.map(user =>({
             name:user.name,
             city:user.location.city,
-            country:user.location.country
+            country:user.location.country,
+            img:user.picture.medium
         }))
         return results;
     }
 
-    _mappPokemon(pokemon){
+    #_mappPokemon(pokemon){
         const result = {
             name:pokemon.name,
             img:pokemon.sprites.front_default

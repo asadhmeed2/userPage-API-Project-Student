@@ -26,13 +26,53 @@
             </div>	
         </div>	
         <div class="buttons">	
-            <button>Load User Data</button>	
-            <button>Display User</button>	
+            <button onclick="generateUser()">Generate User</button>	
+            <!-- <button>Display User</button>	 -->
         </div>	
     </div>
 </body>
 
+<script id="user-header-template" type="text/x-handlebars-template">
+    <img id="profile-pic" src="{{img}}" alt="user image">
+
+    <div class="user-info">
+        {{#with name}}
+        <div class="">
+            <span>{{first}}</span>
+            <span>{{last}}</span>
+        </div>
+        {{/with}}
+        
+        <div class="">
+            <span>{{city}}</span>
+            <span>,</span>
+            <span>{{country}}</span>
+        </div>
+    
+    </div>
+</script>
+
+<script id="quote-template" type="text/x-handlebars-template">
+    <div class="">Favorite quote :</div>
+    <div class="">{{quote}}</div>
+</script>
+
+<script id="pokemon-template" type="text/x-handlebars-template">
+    <img src="{{img}}" alt="pokemon image">
+    <div class=""><span>Favorite Pokemon:</span> <span>{{name}}</span></div>
+</script>
+
+<script id="about-me-template" type="text/x-handlebars-template">
+    <div class="">About me :</div>
+    <div class="">{{aboutMe}}</div>
+</script>
+
+<script id="users-list-item-template" type="text/x-handlebars-template">
+   <div class="">{{name}}</div>
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script> <script src="apt-data.js"></script>
+<script src="config.js"></script>
 <script src="APIManager.js"></script>
 <script src="Renderer.js"></script>
 <script src="main.js"></script>

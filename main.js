@@ -1,3 +1,9 @@
 const apiManager = new APIManager();
+const renderer = new Renderer();
 
-apiManager.initData();
+
+const generateUser = function(){
+    apiManager.generateUser().then(function(data){
+        renderer.render(data);
+    })
+}
