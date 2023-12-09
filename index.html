@@ -61,7 +61,7 @@
 
 <script id="pokemon-template" type="text/x-handlebars-template">
     <img src="{{img}}" alt="pokemon image" id="pokemon-image">
-    <div id="pokemon-text"><span>Favorite Pokemon:</span> <span>{{name}}</span></div>
+    <div id="pokemon-text"><span>Favorite Pokemon:</span> <span>{{firstLetterUpereCase name}}</span></div>
 </script>
 
 <script id="about-me-template" type="text/x-handlebars-template">
@@ -80,7 +80,7 @@
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script> <script src="apt-data.js"></script>
-<script src="utils.js"></script>
+<script src="handlebarsHelpers.js"></script>
 <script src="config.js"></script>
 <script src="storage.js"></script>
 <script src="APIManager.js"></script>

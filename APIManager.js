@@ -78,7 +78,7 @@ class APIManager {
 
     #_mappPokemon(pokemon){
         const result = {
-            name: formatTextFirstLetterToUpperCase(pokemon.name),
+            name: pokemon.name,
             img:pokemon.sprites.front_default
         }
         return result;
