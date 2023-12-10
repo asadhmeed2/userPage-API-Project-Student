@@ -14,7 +14,9 @@
 
 <body>
     <div class="container">	
-        <div class="user-container"></div>	
+        <div class="user-container">
+        </div>	
+        <div class="users-select-container"></div>
         <div class="quote-container"></div>	
         <div class="content-container">	
             <div class="pokemon-container"></div>	
@@ -27,7 +29,7 @@
         </div>	
         <div class="buttons">	
             <button onclick="generateUser()">Generate User</button>	
-            <button onclick="updateUserToStorage()">Save User Page</button>	
+            <button onclick="saveUserToStorage()">Save User Page</button>	
             <button onclick="getUserFromStorag()">Load User Page</button>	
             <!-- <button>Display User</button>	 -->
         </div>	
@@ -79,9 +81,20 @@
    <div class="friend">{{first}} {{last}}</div>
 </script>
 
+<script id="user-select-template" type="text/x-handlebars-template">
+   <select onchange="onSelectUser(event)" id="{{selectId}}"></select>
+</script>
+
+<script id="user-select-option-template" type="text/x-handlebars-template">
+    {{#with user}}
+    <option value="{{id}}">{{name.first}} {{name.last}}</option>
+    {{/with}}
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script> <script src="apt-data.js"></script>
-<script src="handlebarsHelpers.js"></script>
 <script src="config.js"></script>
+<script src="handlebarsHelpers.js"></script>
+<script src="localStorageManager.js"></script>
 <script src="storage.js"></script>
 <script src="APIManager.js"></script>
 <script src="Renderer.js"></script>

@@ -6,3 +6,5 @@ const ABOUT_ME_DATA_IDX = 3;
 const VIEW_USER_IDX = 0;
 
 const USER_STORAGE_DATA_KEY = 'USER';
+
+const USERS_STORAGE_DATA_KEY = 'USERS';
