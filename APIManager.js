@@ -17,10 +17,12 @@ class APIManager {
         this.#_getQuotePromise(),
         this.#_getAboutMePromise()
         ]).then((dataArray)=>{
-            const users = this.#_mappUsers(dataArray[VIEW_USER_DATA_IDX]);
-            const pokemon = this.#_mappPokemon(dataArray[POKEMON_DATA_IDX]);
-            const quote = dataArray[ QUOTE_DATA_IDX].quote;
-            const aboutMe = dataArray[ABOUT_ME_DATA_IDX][0];
+            const [usersData,pokemonData,quoteData,aboutMeData] = dataArray;
+            
+            const users = this.#_mappUsers(usersData);
+            const pokemon = this.#_mappPokemon(pokemonData);
+            const quote = quoteData.quote;
+            const aboutMe = aboutMeData[0];
 
             const friends = users.splice(1);
             const user = users[VIEW_USER_IDX];

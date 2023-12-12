@@ -41,5 +41,5 @@ const saveUserToStorage = function(){
 
 const onSelectUser=function(e){
     localStorageManager.selectedUser = e.target.value;
-    renderUserFromLocalStorage();
+    // renderUserFromLocalStorage();
 }

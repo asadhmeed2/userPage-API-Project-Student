@@ -1,7 +1,4 @@
-const VIEW_USER_DATA_IDX = 0;
-const POKEMON_DATA_IDX = 1;
-const QUOTE_DATA_IDX = 2;
-const ABOUT_ME_DATA_IDX = 3;
+
 
 const VIEW_USER_IDX = 0;
 
