@@ -18,7 +18,7 @@ class APIManager {
         this.#_getAboutMePromise()
         ]).then((dataArray)=>{
             const [usersData,pokemonData,quoteData,aboutMeData] = dataArray;
-            
+
             const users = this.#_mappUsers(usersData);
             const pokemon = this.#_mappPokemon(pokemonData);
             const quote = quoteData.quote;
@@ -38,20 +38,20 @@ class APIManager {
     }
 
     #_getUsersPromise() {
-        return $.get(`https://randomuser.me/api/?results=${USERS_RESULT_COUNT}`)
+        return $.get(`${RANDOM_USER_API}?results=${USERS_RESULT_COUNT}`)
     }
 
     #_getPokemonsPromise() {
         const randomNumber = Math.floor(Math.random() * POKEMON_NUMBER) + POKEMON_MIN_ID
-        return $.get(`https://pokeapi.co/api/v2/pokemon/${randomNumber}`)
+        return $.get(`${POKEMON_API}${randomNumber}`)
     }
 
     #_getQuotePromise() {
-        return $.get(`https://api.kanye.rest/`)
+        return $.get(`${QUOTE_API}`)
     }
 
     #_getAboutMePromise(){
-        return $.get(`https://baconipsum.com/api/?type=all-meat&paras=1&start-with-lorem=1`)
+        return $.get(LORAM_API)
     }
 
     #_mappUsers(data){
